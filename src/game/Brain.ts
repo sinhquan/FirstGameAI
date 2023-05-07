@@ -1,5 +1,8 @@
-import { Vector } from "p5";
-
+declare global {
+  interface Window {
+    p5: any;
+  }
+}
 export class Brain {
 
   directions: any[] = [];//series of vectors which get the dot to the goal (hopefully)
@@ -15,7 +18,7 @@ export class Brain {
   randomize = () => {
     for (let i = 0; i< this.directions.length; i++) {
       let randomAngle = Math.random()*2*Math.PI;
-      this.directions[i] = Vector.fromAngle(randomAngle);
+      this.directions[i] = window.p5?.Vector.fromAngle(randomAngle);
       // console.log('aaaaaaaa: ', this.directions[i])
       // console.log('bbbbbbbb: ', Population.p5.createVector(1, -1))
       // for test 
@@ -44,7 +47,7 @@ export class Brain {
       if (rand < mutationRate) {
         //set this direction as a random direction 
         let randomAngle = Math.random()*2*Math.PI;
-        this.directions[i] = Vector.fromAngle(randomAngle);
+        this.directions[i] = window.p5?.Vector.fromAngle(randomAngle);
       }
     }
   }
