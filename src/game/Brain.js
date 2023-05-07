@@ -23,6 +23,9 @@ var Brain = /** @class */ (function () {
             for (var i = 0; i < _this.directions.length; i++) {
                 var randomAngle = Math.random() * 2 * Math.PI;
                 // this.directions[i] = Vector.fromAngle(randomAngle);
+                // console.log('aaaaaaaa: ', this.directions[i])
+                // console.log('bbbbbbbb: ', Population.p5.createVector(1, -1))
+                // for test 
                 _this.directions[i] = Population_1.Population.p5.createVector(1, -1);
             }
         };
