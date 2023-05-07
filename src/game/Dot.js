@@ -36,9 +36,11 @@ var Dot = /** @class */ (function () {
                 _this.dead = true;
             }
             //apply the acceleration and move the dot
-            _this.vel.add(_this.acc);
-            _this.vel.limit(5); //not too fast
-            _this.pos.add(_this.vel);
+            _this.vel = _this.vel.add(_this.acc);
+            _this.vel = _this.vel.limit(5); //not too fast
+            _this.pos = _this.pos.add(_this.vel);
+            // for test
+            // this.pos.x += 1;
         };
         //-------------------------------------------------------------------------------------------------------------------
         //calls the move function and check for collisions and stuff

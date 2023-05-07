@@ -55,9 +55,11 @@ export class Dot {
     }
 
     //apply the acceleration and move the dot
-    this.vel.add(this.acc);
-    this.vel.limit(5);//not too fast
-    this.pos.add(this.vel);
+    this.vel = this.vel.add(this.acc);
+    this.vel = this.vel.limit(5);//not too fast
+    this.pos = this.pos.add(this.vel);
+    // for test
+    // this.pos.x += 1;
   }
 
   //-------------------------------------------------------------------------------------------------------------------

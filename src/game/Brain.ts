@@ -1,4 +1,5 @@
 import { Vector } from "p5";
+import { Population } from "./Population";
 
 export class Brain {
 
@@ -16,6 +17,8 @@ export class Brain {
     for (let i = 0; i< this.directions.length; i++) {
       let randomAngle = Math.random()*2*Math.PI;
       this.directions[i] = Vector.fromAngle(randomAngle);
+      // for test
+      // this.directions[i] = Population.p5.createVector(1, -1);
     }
   }
 

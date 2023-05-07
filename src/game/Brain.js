@@ -11,6 +11,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Brain = void 0;
 var p5_1 = require("p5");
+var Population_1 = require("./Population");
 var Brain = /** @class */ (function () {
     function Brain(size) {
         var _this = this;
@@ -21,7 +22,8 @@ var Brain = /** @class */ (function () {
         this.randomize = function () {
             for (var i = 0; i < _this.directions.length; i++) {
                 var randomAngle = Math.random() * 2 * Math.PI;
-                _this.directions[i] = p5_1.Vector.fromAngle(randomAngle);
+                // this.directions[i] = Vector.fromAngle(randomAngle);
+                _this.directions[i] = Population_1.Population.p5.createVector(1, -1);
             }
         };
         //-------------------------------------------------------------------------------------------------------------------------------------
