@@ -2,13 +2,10 @@ import { Vector } from "p5";
 
 export class Brain {
 
-  p5: any;
-
   directions: any[] = [];//series of vectors which get the dot to the goal (hopefully)
   step = 0;
 
-  constructor (p5: any, size: number) {
-    this.p5 = p5;
+  constructor (size: number) {
     this.directions = new Array(size);
     this.randomize();
   }
@@ -25,7 +22,7 @@ export class Brain {
   //-------------------------------------------------------------------------------------------------------------------------------------
   //returns a perfect copy of this brain object
   clone = (): Brain => {
-    let clone = new Brain(this.p5, this.directions.length);
+    let clone = new Brain(this.directions.length);
     for (let i = 0; i < this.directions.length; i++) {
       clone.directions[i] = [...this.directions[i]]
     }

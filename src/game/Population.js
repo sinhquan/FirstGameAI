@@ -68,7 +68,7 @@ var Population = /** @class */ (function () {
                 //select parent based on fitness
                 var parent_1 = _this.selectParent();
                 //get baby from them
-                newDots[i] = (parent_1 === null || parent_1 === void 0 ? void 0 : parent_1.gimmeBaby()) || new Dot_1.Dot(_this.p5, _this.goal);
+                newDots[i] = (parent_1 === null || parent_1 === void 0 ? void 0 : parent_1.gimmeBaby()) || new Dot_1.Dot(_this.goal);
             }
             _this.dots = __spreadArray([], newDots, true);
             _this.gen++;
@@ -76,9 +76,9 @@ var Population = /** @class */ (function () {
         //--------------------------------------------------------------------------------------------------------------------------------------
         //you get it
         this.calculateFitnessSum = function () {
-            var fitnessSum = 0;
+            _this.fitnessSum = 0;
             for (var i = 0; i < _this.dots.length; i++) {
-                fitnessSum += _this.dots[i].fitness;
+                _this.fitnessSum += _this.dots[i].fitness;
             }
         };
         //-------------------------------------------------------------------------------------------------------------------------------------
@@ -123,11 +123,11 @@ var Population = /** @class */ (function () {
                 console.log("step:", _this.minStep);
             }
         };
-        this.p5 = p5;
+        Population.p5 = p5;
         this.goal = goal;
         this.dots = new Array(size);
         for (var i = 0; i < size; i++) {
-            this.dots[i] = new Dot_1.Dot(this.p5, this.goal);
+            this.dots[i] = new Dot_1.Dot(this.goal);
         }
     }
     return Population;

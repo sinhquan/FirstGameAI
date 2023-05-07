@@ -10,18 +10,17 @@ export class Population {
 
   minStep = 1000;
 
-  p5: any;
+  static p5: any;
   goal: any;
 
   constructor(p5, goal, size: number) {
-    this.p5 = p5;
+    Population.p5 = p5;
     this.goal = goal;
     this.dots = new Array(size);
     for (let i = 0; i< size; i++) {
-      this.dots[i] = new Dot(this.p5, this.goal);
+      this.dots[i] = new Dot(this.goal);
     }
   }
-
 
   //------------------------------------------------------------------------------------------------------------------------------
   //show all dots
@@ -83,7 +82,7 @@ export class Population {
       let parent: Dot | null = this.selectParent();
 
       //get baby from them
-      newDots[i] = parent?.gimmeBaby() || new Dot(this.p5, this.goal);
+      newDots[i] = parent?.gimmeBaby() || new Dot(this.goal);
     }
 
     this.dots = [...newDots];
@@ -94,9 +93,9 @@ export class Population {
   //--------------------------------------------------------------------------------------------------------------------------------------
   //you get it
   calculateFitnessSum = () => {
-    let fitnessSum = 0;
+    this.fitnessSum = 0;
     for (let i = 0; i< this.dots.length; i++) {
-      fitnessSum += this.dots[i].fitness;
+      this.fitnessSum += this.dots[i].fitness;
     }
   }
 

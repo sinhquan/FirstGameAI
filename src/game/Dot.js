@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Dot = void 0;
 var Brain_1 = require("./Brain");
+var Population_1 = require("./Population");
 var Dot = /** @class */ (function () {
-    function Dot(p5, goal) {
+    function Dot(goal) {
         var _this = this;
         this.dead = false;
         this.reachedGoal = false;
@@ -16,12 +17,12 @@ var Dot = /** @class */ (function () {
         this.show = function () {
             //if this dot is the best dot from the previous generation then draw it as a big green dot
             if (_this.isBest) {
-                _this.p5.fill(0, 255, 0);
-                _this.p5.ellipse(_this.pos.x, _this.pos.y, 8, 8);
+                Population_1.Population.p5.fill(0, 255, 0);
+                Population_1.Population.p5.ellipse(_this.pos.x, _this.pos.y, 8, 8);
             }
             else { //all other dots are just smaller black dots
-                _this.p5.fill(0);
-                _this.p5.ellipse(_this.pos.x, _this.pos.y, 4, 4);
+                Population_1.Population.p5.fill(0);
+                Population_1.Population.p5.ellipse(_this.pos.x, _this.pos.y, 4, 4);
             }
         };
         //-----------------------------------------------------------------------------------------------------------------------
@@ -47,7 +48,7 @@ var Dot = /** @class */ (function () {
                 if (_this.pos.x < 2 || _this.pos.y < 2 || _this.pos.x > _this.width - 2 || _this.pos.y > _this.height - 2) { //if near the edges of the window then kill it 
                     _this.dead = true;
                 }
-                else if (_this.p5.dist(_this.pos.x, _this.pos.y, _this.goal.x, _this.goal.y) < 5) { //if reached goal
+                else if (Population_1.Population.p5.dist(_this.pos.x, _this.pos.y, _this.goal.x, _this.goal.y) < 5) { //if reached goal
                     _this.reachedGoal = true;
                 }
                 else if (_this.pos.x < 600 && _this.pos.y < 310 && _this.pos.x > 0 && _this.pos.y > 300) { //if hit obstacle
@@ -62,24 +63,23 @@ var Dot = /** @class */ (function () {
                 _this.fitness = 1.0 / 16.0 + 10000.0 / (_this.brain.step * _this.brain.step);
             }
             else { //if the dot didn't reach the goal then the fitness is based on how close it is to the goal
-                var distanceToGoal = _this.p5.dist(_this.pos.x, _this.pos.y, _this.goal.x, _this.goal.y);
+                var distanceToGoal = Population_1.Population.p5.dist(_this.pos.x, _this.pos.y, _this.goal.x, _this.goal.y);
                 _this.fitness = 1.0 / (distanceToGoal * distanceToGoal);
             }
         };
         //---------------------------------------------------------------------------------------------------------------------------------------
         //clone it 
         this.gimmeBaby = function () {
-            var baby = new Dot(_this.p5, _this.goal);
+            var baby = new Dot(_this.goal);
             baby.brain = _this.brain.clone(); //babies have the same brain as their parents
             return baby;
         };
-        this.p5 = p5;
         this.goal = goal;
         //start the dots at the bottom of the window with a no velocity or acceleration
-        this.pos = this.p5.createVector(this.width / 2, this.height - 10);
-        this.vel = this.p5.createVector(0, 0);
-        this.acc = this.p5.createVector(0, 0);
-        this.brain = new Brain_1.Brain(this.p5, 1000); //new brain with 1000 instructions
+        this.pos = Population_1.Population.p5.createVector(this.width / 2, this.height - 10);
+        this.vel = Population_1.Population.p5.createVector(0, 0);
+        this.acc = Population_1.Population.p5.createVector(0, 0);
+        this.brain = new Brain_1.Brain(1000); //new brain with 1000 instructions
     }
     return Dot;
 }());
