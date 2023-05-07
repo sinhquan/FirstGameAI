@@ -10,7 +10,6 @@ function App() {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
     p5.createCanvas(800, 800).parent(canvasParentRef);
-    // p5.size(800, 800); //size of the window
     p5.frameRate(100);//increase this to make the dots go faster
     goal  = p5.createVector(400, 10);
     test = new Population(p5, goal, 1000);//create a new population with 1000 members

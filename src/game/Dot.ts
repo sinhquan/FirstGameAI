@@ -1,10 +1,11 @@
+import { Vector } from "p5";
 import { Brain } from './Brain';
 
 export class Dot {
-  pos;
-  vel;
-  acc;
-  brain;
+  pos: Vector;
+  vel: Vector;
+  acc: Vector;
+  brain: Brain;
 
   dead = false;
   reachedGoal = false;
