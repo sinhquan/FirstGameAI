@@ -20,7 +20,7 @@ var Dot = /** @class */ (function () {
                 _this.p5.ellipse(_this.pos.x, _this.pos.y, 8, 8);
             }
             else { //all other dots are just smaller black dots
-                _this.p5.fill(0);
+                _this.p5.fill(0, 0, 255);
                 _this.p5.ellipse(_this.pos.x, _this.pos.y, 4, 4);
             }
         };

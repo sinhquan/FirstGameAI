@@ -10,6 +10,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Brain = void 0;
+var p5_1 = require("p5");
 var Brain = /** @class */ (function () {
     function Brain(p5, size) {
         var _this = this;
@@ -20,7 +21,7 @@ var Brain = /** @class */ (function () {
         this.randomize = function () {
             for (var i = 0; i < _this.directions.length; i++) {
                 var randomAngle = Math.random() * 2 * Math.PI;
-                // this.directions[i] = this.p5.Vector.fromAngle(randomAngle);
+                _this.directions[i] = p5_1.Vector.fromAngle(randomAngle);
             }
         };
         //-------------------------------------------------------------------------------------------------------------------------------------
@@ -41,7 +42,7 @@ var Brain = /** @class */ (function () {
                 if (rand < mutationRate) {
                     //set this direction as a random direction 
                     var randomAngle = Math.random() * 2 * Math.PI;
-                    // this.directions[i] = this.p5.Vector.fromAngle(randomAngle);
+                    _this.directions[i] = p5_1.Vector.fromAngle(randomAngle);
                 }
             }
         };

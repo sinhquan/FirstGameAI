@@ -1,3 +1,4 @@
+import { Vector } from "p5";
 
 export class Brain {
 
@@ -17,7 +18,7 @@ export class Brain {
   randomize = () => {
     for (let i = 0; i< this.directions.length; i++) {
       let randomAngle = Math.random()*2*Math.PI;
-      // this.directions[i] = this.p5.Vector.fromAngle(randomAngle);
+      this.directions[i] = Vector.fromAngle(randomAngle);
     }
   }
 
@@ -42,7 +43,7 @@ export class Brain {
       if (rand < mutationRate) {
         //set this direction as a random direction 
         let randomAngle = Math.random()*2*Math.PI;
-        // this.directions[i] = this.p5.Vector.fromAngle(randomAngle);
+        this.directions[i] = Vector.fromAngle(randomAngle);
       }
     }
   }
