@@ -1,11 +1,8 @@
-declare global {
-  interface Window {
-    p5: any;
-  }
-}
+import { Vector } from "p5";
+
 export class Brain {
 
-  directions: any[] = [];//series of vectors which get the dot to the goal (hopefully)
+  directions: Vector[] = [];//series of vectors which get the dot to the goal (hopefully)
   step = 0;
 
   constructor (size: number) {
@@ -31,7 +28,7 @@ export class Brain {
   clone = (): Brain => {
     let clone = new Brain(this.directions.length);
     for (let i = 0; i < this.directions.length; i++) {
-      clone.directions[i] = [...this.directions[i]]
+      clone.directions[i] = this.directions[i]
     }
 
     return clone;

@@ -19,7 +19,7 @@ export class Dot {
 
   goal: any;
 
-  constructor(goal) {
+  constructor(goal: Vector) {
     this.goal = goal;
 
     //start the dots at the bottom of the window with a no velocity or acceleration

@@ -1,19 +1,20 @@
 import { Dot } from "./Dot";
-
+import { Vector } from "p5";
+import p5Types from "p5";
 export class Population {
   dots: Dot[] = [];
 
-  fitnessSum;
+  fitnessSum = 0;
   gen = 1;
 
   bestDot = 0;//the index of the best dot in the dots[]
 
   minStep = 1000;
 
-  static p5: any;
+  static p5: p5Types;
   goal: any;
 
-  constructor(p5, goal, size: number) {
+  constructor(p5: p5Types, goal: Vector, size: number) {
     Population.p5 = p5;
     this.goal = goal;
     this.dots = new Array(size);

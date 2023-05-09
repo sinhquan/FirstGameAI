@@ -1,12 +1,15 @@
+import React from 'react';
 import Sketch from "react-p5";
-import { Population } from './game/Population.js';
+import { Vector } from "p5";
+import p5Types from "p5";
+import { Population } from './game/Population';
 import './App.css';
 
 function App() {
-  let goal;
-  let test;
+  let goal: Vector;
+  let test: Population;
 
-  const setup = (p5, canvasParentRef) => {
+  const setup = (p5: p5Types, canvasParentRef: any) => {
     // use parent to render the canvas in this ref
     // (without that p5 will render the canvas outside of your component)
     p5.createCanvas(800, 800).parent(canvasParentRef);
@@ -15,8 +18,8 @@ function App() {
     test = new Population(p5, goal, 1000);//create a new population with 1000 members
   };
 
-  const draw = (p5) => {
-    p5.background(255);
+  const draw = (p5: p5Types) => {
+    p5.background(220);
 
     //draw goal
     p5.fill(255, 0, 0);
