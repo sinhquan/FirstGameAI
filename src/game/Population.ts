@@ -70,6 +70,7 @@ export class Population {
   //-------------------------------------------------------------------------------------------------------------------------------------
 
   //gets the next generation of dots
+  //1. lấy player tốt nhất, 2. tính tổng số fitness, 3. tạo ra (gimmeBaby) 1 player của player tốt nhất (ở vị trí đầu tiên của danh sách player mới), 4. Lấy danh sách cha của danh sách (trừ vị trí đầu tiên) player mới và gán cha (parent) cho chính Player mới (Dot), 5. Gán lại cho danh sách cũ, 6. Thêm một lần gen
   naturalSelection = () => {
     let newDots: Dot[] = new Array(this.dots.length);//next gen
     this.setBestDot();
@@ -93,6 +94,7 @@ export class Population {
 
   //--------------------------------------------------------------------------------------------------------------------------------------
   //you get it
+  //Tính tổng số fitness
   calculateFitnessSum = () => {
     this.fitnessSum = 0;
     for (let i = 0; i< this.dots.length; i++) {
@@ -107,6 +109,7 @@ export class Population {
   //this function works by randomly choosing a value between 0 and the sum of all the fitnesses
   //then go through all the dots and add their fitness to a running sum and if that sum is greater than the random value generated that dot is chosen
   //since dots with a higher fitness function add more to the running sum then they have a higher chance of being chosen
+  //Trong tổng số fitness thì lấy random một fitness trong tổng đó và lấy Dot có fitness lớn hơn fitness random đó
   selectParent = (): Dot | null => {
     let rand = Math.random()*this.fitnessSum;
 
@@ -127,6 +130,7 @@ export class Population {
 
   //------------------------------------------------------------------------------------------------------------------------------------------
   //mutates all the brains of the babies
+  //Đột biến cho brain cho các Player (Dot) (trừ vị trí đầu tiên trong danh sách Dot)
   mutateDemBabies = () => {
     for (let i = 1; i< this.dots.length; i++) {
       this.dots[i].brain.mutate();
@@ -135,6 +139,7 @@ export class Population {
 
   //---------------------------------------------------------------------------------------------------------------------------------------------
   //finds the dot with the highest fitness and sets it as the best dot
+  //chọn Player (Dot) có fitness lớn nhất
   setBestDot = () => {
     let max = 0;
     let maxIndex = 0;

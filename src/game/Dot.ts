@@ -32,6 +32,7 @@ export class Dot {
 
   //-----------------------------------------------------------------------------------------------------------------
   //draws the dot on the screen
+  //vẽ player và best player
   show = () => {
     //if this dot is the best dot from the previous generation then draw it as a big green dot
     if (this.isBest) {
@@ -45,6 +46,7 @@ export class Dot {
 
   //-----------------------------------------------------------------------------------------------------------------------
   //moves the dot according to the brains directions
+  //di chuyển player đó theo các hướng có trong não
   move = () => {
 
     if (this.brain.directions.length > this.brain.step) {//if there are still directions left then set the acceleration as the next PVector in the direcitons array
@@ -64,6 +66,7 @@ export class Dot {
 
   //-------------------------------------------------------------------------------------------------------------------
   //calls the move function and check for collisions and stuff
+  //nếu chưa chết và chưa đến đích thì vẫn move cho đến khi chết hoặc đến dích
   update = () => {
     if (!this.dead && !this.reachedGoal) {
       this.move();
@@ -81,6 +84,7 @@ export class Dot {
 
   //--------------------------------------------------------------------------------------------------------------------------------------
   //calculates the fitness
+  //tính fitness, nếu đến đích dựa vào số bước, nếu chưa đến đích thì dựa vào khoảng cách gần tới đích
   calculateFitness = () => {
     if (this.reachedGoal) {//if the dot reached the goal then the fitness is based on the amount of steps it took to get there
       this.fitness = 1.0/16.0 + 10000.0/(this.brain.step * this.brain.step);
@@ -92,6 +96,7 @@ export class Dot {
 
   //---------------------------------------------------------------------------------------------------------------------------------------
   //clone it 
+  //tạo ra 1 player của chính nó
   gimmeBaby = (): Dot => {
     let baby = new Dot(this.goal);
     baby.brain = this.brain.clone();//babies have the same brain as their parents

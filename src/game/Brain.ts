@@ -12,6 +12,7 @@ export class Brain {
 
   //--------------------------------------------------------------------------------------------------------------------------------
   //sets all the vectors in directions to a random vector with length 1
+  //tạo ra 1000 hướng đi random
   randomize = () => {
     for (let i = 0; i< this.directions.length; i++) {
       let randomAngle = Math.random()*2*Math.PI;
@@ -25,6 +26,7 @@ export class Brain {
 
   //-------------------------------------------------------------------------------------------------------------------------------------
   //returns a perfect copy of this brain object
+  //tạo ra 1 brain chính nó
   clone = (): Brain => {
     let clone = new Brain(this.directions.length);
     for (let i = 0; i < this.directions.length; i++) {
@@ -37,6 +39,7 @@ export class Brain {
   //----------------------------------------------------------------------------------------------------------------------------------------
 
   //mutates the brain by setting some of the directions to random vectors
+  //đột biến brain, random một số hướng
   mutate = () => {
     let mutationRate = 0.01;//chance that any vector in directions gets changed
     for (let i =0; i< this.directions.length; i++) {
